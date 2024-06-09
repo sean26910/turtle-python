@@ -1,0 +1,69 @@
+import time #to use sleep function
+import datetime as dt #obtain current time
+import turtle
+
+#create a turtle to display time
+t=turtle.Turtle()
+t.color('#f6fa05') #yellow
+t.goto(-130,0)
+
+#create a turtle to display day
+y=turtle.Turtle()
+y.color('#f6fa05')
+y.goto(-140,150)
+
+#create a ractangle
+t1=turtle.Turtle()
+#create screen
+s=turtle.Screen()
+
+#set background color of the screen
+s.bgcolor('#000917') #black
+
+t1.pensize(10)
+t1.color('#05fad5') #blue
+#set the position of the turtle
+t1.goto(-145,0)
+
+
+#create rectangle box
+for i in range(2):
+    t1.forward(300)
+    t1.left(90)
+    t1.forward(80)
+    t1.left(90)
+t1.hideturtle()
+
+# obtain current year,month,day
+year = dt.datetime.now().year
+month = dt.datetime.now().month
+day = dt.datetime.now().day
+
+y.hideturtle()
+y.clear()
+y.write(str(year).zfill(2) + '/' + str(month).zfill(2) +
+'/' + str(day).zfill(2), font=('arial narrow', 50, 'bold'))
+
+while True:
+    t.hideturtle()
+    t.clear()
+
+    # obtain current hour,min,sec
+    sec = dt.datetime.now().second
+    min = dt.datetime.now().minute
+    hr = dt.datetime.now().hour
+
+    #display the time
+    t.write(str(hr).zfill(2)+':'+str(min).zfill(2)+
+    ':'+str(sec).zfill(2),font=('arial narrow',50,'bold'))
+
+    if(hr==0 and min==0 and 0<=sec<=2):
+        y.hideturtle()
+        y.clear()
+        year = dt.datetime.now().year
+        month = dt.datetime.now().month
+        day = dt.datetime.now().day
+        y.write(str(year).zfill(2) + '/' + str(month).zfill(2) +
+        '/' + str(day).zfill(2), font=('arial narrow', 50, 'bold'))
+
+    time.sleep(1)
